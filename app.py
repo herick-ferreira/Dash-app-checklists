@@ -26,6 +26,7 @@ app = Dash(
     suppress_callback_exceptions=True,
 )
 app.title = title
+server = app.server
 
 # CSS injetado via index_string (compatível com todas as versões do Dash)
 app.index_string = """

@@ -1,5 +1,15 @@
 # Dashboard de Checklists
 
+---
+license: apache-2.0
+title: Dash-app-checklists
+sdk: docker
+emoji: 📊
+colorFrom: blue
+colorTo: gray
+---
+
+
 Bem-vindo! Este repositório contém um dashboard interativo construído com Dash que ajuda a visualizar os resultados de checklists por loja, tópico e tag. É simples de usar e fácil de personalizar — ideal para relatórios rápidos e painéis operacionais.
 
 **Recursos principais**
