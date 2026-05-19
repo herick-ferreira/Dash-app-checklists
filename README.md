@@ -10,6 +10,15 @@ colorTo: gray
 ---
 
 
+[Link do app](https://9e475981-6c2b-4e6e-9739-9834b6cac4f6.plotly.app)
+
+
+
+<img width="1894" height="886" alt="image" src="https://github.com/user-attachments/assets/b8ba05a7-3ff4-48c7-b8df-1f9fb0983d51" />
+
+
+
+
 Bem-vindo! Este repositório contém um dashboard interativo construído com Dash que ajuda a visualizar os resultados de checklists por loja, tópico e tag. É simples de usar e fácil de personalizar — ideal para relatórios rápidos e painéis operacionais.
 
 **Recursos principais**
@@ -67,6 +76,6 @@ Se alguma coluna estiver com nome diferente, atualize o `app.py` ou renomeie as 
 - Garanta que `Nota Possível` não contenha zeros distribuídos que quebrem médias — o código já faz uma substituição segura.
 - Para produção, execute com um servidor WSGI (por exemplo, Gunicorn) e coloque atrás de um proxy reverso.
 
-Contribuições e feedbacks são bem-vindos — abra uma issue ou envie um PR!
+Contribuições e feedbacks são bem-vindos — abra uma issue ou envie um PR [herick-ferreira](https://github.com/herick-ferreira)!
 # Dash-app-checklists
 
