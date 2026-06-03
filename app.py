@@ -414,6 +414,25 @@ def apply_filters(ano_sel, mes_sel, loja_sel, topico_sel, tag_sel):
     return dff
 
 
+def dropdown_options(values):
+    return [{"label": value, "value": value} for value in values]
+
+
+def valid_selection(selected, allowed):
+    if not selected:
+        return selected
+    allowed_set = set(allowed)
+    return [value for value in selected if value in allowed_set]
+
+
+def available_values(dff, column):
+    values = dff[column].dropna().unique()
+    if column == "Mês":
+        month_labels = [list_meses[int(value) - 1] for value in values]
+        return sorted(month_labels, key=lambda value: list_meses.index(value))
+    return sorted(values)
+
+
 def color_for(v):
     if v >= 0.85:
         return "#22C55E"
@@ -518,6 +537,55 @@ def toggle_sidebar(n_clicks, collapsed):
         sidebar_style = {"transform": "translateX(-110%)"}
 
     return sidebar_style, collapsed
+
+
+@app.callback(
+    Output("filter-ano", "options"),
+    Output("filter-ano", "value"),
+    Output("filter-mes", "options"),
+    Output("filter-mes", "value"),
+    Output("filter-loja", "options"),
+    Output("filter-loja", "value"),
+    Output("filter-topico", "options"),
+    Output("filter-topico", "value"),
+    Output("filter-tag", "options"),
+    Output("filter-tag", "value"),
+    Input("filter-ano", "value"),
+    Input("filter-mes", "value"),
+    Input("filter-loja", "value"),
+    Input("filter-topico", "value"),
+    Input("filter-tag", "value"),
+)
+def update_filter_options(ano_sel, mes_sel, loja_sel, topico_sel, tag_sel):
+    anos_disp = available_values(
+        apply_filters(None, mes_sel, loja_sel, topico_sel, tag_sel), "Ano"
+    )
+    meses_disp = available_values(
+        apply_filters(ano_sel, None, loja_sel, topico_sel, tag_sel), "Mês"
+    )
+    lojas_disp = available_values(
+        apply_filters(ano_sel, mes_sel, None, topico_sel, tag_sel), "Loja"
+    )
+    topicos_disp = available_values(
+        apply_filters(ano_sel, mes_sel, loja_sel, None, tag_sel), "Tópico"
+    )
+    tags_disp = available_values(
+        apply_filters(ano_sel, mes_sel, loja_sel, topico_sel, None), "Tag"
+    )
+
+    return (
+        dropdown_options(anos_disp),
+        valid_selection(ano_sel, anos_disp),
+        dropdown_options(meses_disp),
+        valid_selection(mes_sel, meses_disp),
+        dropdown_options(lojas_disp),
+        valid_selection(loja_sel, lojas_disp),
+        dropdown_options(topicos_disp),
+        valid_selection(topico_sel, topicos_disp),
+        dropdown_options(tags_disp),
+        valid_selection(tag_sel, tags_disp),
+    )
+
 
 @app.callback(
     Output("gauge-chart", "figure"),
