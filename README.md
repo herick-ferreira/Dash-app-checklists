@@ -10,7 +10,7 @@ colorTo: gray
 ---
 
 
-[Link do app](https://d94b4b2f-6a61-4d62-b63e-39ef7619f15d.plotly.app/)
+<a href="https://d94b4b2f-6a61-4d62-b63e-39ef7619f15d.plotly.app/" target="_blank">Link do app</a>
 
 
 
